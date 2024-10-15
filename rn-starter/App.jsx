@@ -1,14 +1,21 @@
 import { View, Text,StyleSheet, Button,Alert} from 'react-native';
 import React from 'react';
 
+
 const JSX = () =>{
-    let name ='Pooja';
-    let sirname ='Sathe';
+
+const GetName = (name) =>{
+
+
+  console.warn(name);
+
+
+  };
 
 return(
   <View>
-    <Text style={{fontSize : 30}}>{name}</Text>
-    <Text style={{fontSize : 30}}>{sirname}</Text>
+    <Text style={ { fontSize : 50 } }>onpress</Text>
+    <Button title ="PRESS" onPress={()=> GetName('Hello Pooja Sathe')}/>
     </View>
 );
 };
