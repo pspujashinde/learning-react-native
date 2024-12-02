@@ -7,9 +7,9 @@ const[show,setshow]=useState(true)
 
 return(
 <View>
-<Text style={{fontSize:40}}>Show/Hide component</Text>
-<Button title="show"style={{fontSize:20}} onPress={()=>setshow(true)}/>
-<Button title="hide"style={{fontSize:20}} onPress={()=>setshow(false)} />
+<Text style={{fontSize:40}}>Toggle component</Text>
+<Button title="Toggle"style={{fontSize:20}} onPress={()=>setshow(!show)}/>
+
 {
   show ?<Student/> :null
 }
