@@ -1,26 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Text,Button, View } from "react-native";
 
 const App=()=>{
-const [count,setcount]=useState(0); 
-const [data,setdata]=useState(100); 
-useEffect(()=>{
-
-  console.warn({count});
-},[count])
+const[show,setshow]=useState(true)
 
 
 return(
 <View>
-<Text style={{fontSize:30}}>use UseEffect with specific state only</Text>
-<Text style={{fontSize:30}}>{data}</Text>
-<Text style={{fontSize:30}}>{count}</Text>
-<Button title="UpdateCount" onPress={()=>{setcount(count+1)}}/>
-<Button title="UpdateData" onPress={()=>{setdata(data+1)}}/>
+<Text style={{fontSize:40}}>Show/Hide component</Text>
+<Button title="show"style={{fontSize:20}} onPress={()=>setshow(true)}/>
+<Button title="hide"style={{fontSize:20}} onPress={()=>setshow(false)} />
+{
+  show ?<Student/> :null
+}
 
 </View>
 
   )
 }
 
+
+const Student=()=>
+{
+  return(
+    <Text style={{fontSize:30}}>Student's Data</Text>
+  )
+}
 export default App;
