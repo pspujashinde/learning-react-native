@@ -4,34 +4,44 @@ import { StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from "re
 
 
 const App = () => {
+const Skill=[
+ { 
+  id:1,
+  name:'java',
+ },
+ {
+ id:2,
+ name:'php'
+ },
+ {
+  id:3,
+  name:'NodeJs'
+ },
+ {
+  id:4,
+  name:'angular'
+ }
 
+]
 const[selectedradio,setselectedradio]=useState(1)
 
   return (
     <View style={styles.main}>
   
-    <TouchableOpacity onPress={()=>setselectedradio(1)}>
+    {
+      Skill.map((item)=><TouchableOpacity onPress={()=>setselectedradio(item.id)}>
       <View style={styles.radiowraper}>
       <View style={styles.circle}>
         
       {
-        selectedradio==1?<View style={styles.circlebg}></View>:null
+        selectedradio==item.id?<View style={styles.circlebg}></View>:null
       }
       </View>
-      <Text style={styles.radioText}>Radio 1</Text>
+      <Text style={styles.radioText}>{item.name}</Text>
       </View>
-    </TouchableOpacity>
-    <TouchableOpacity onPress={()=>setselectedradio(2)}>
-      <View style={styles.radiowraper}>
-      <View style={styles.circle}>
-        
-      {
-        selectedradio==2?<View style={styles.circlebg}></View>:null
-      }
-      </View>
-      <Text style={styles.radioText}>Radio 2</Text>
-      </View>
-    </TouchableOpacity>
+    </TouchableOpacity>)
+    }
+    
     </View>
 
     
