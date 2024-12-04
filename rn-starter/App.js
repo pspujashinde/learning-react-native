@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableHighlight, View } from "react-native";
 
 
 
@@ -9,31 +9,44 @@ const App = () => {
 
   return (
     <View style={styles.main}>
-    <View style={styles.box1}></View>
-    <View style={styles.box2}></View>
-    <View style={styles.box3}></View>
-    <View style={styles.box4}></View>
+  
+    <TouchableHighlight>
+      <Text style={styles.button}>Button</Text>
+    </TouchableHighlight>
+    <TouchableHighlight>
+      <Text style={[styles.button,styles.success]}>Success</Text>
+    </TouchableHighlight>
+    <TouchableHighlight>
+      <Text style={[styles.button,styles.error]}>Error</Text>
+    </TouchableHighlight>
+    <TouchableHighlight>
+      <Text style={[styles.button,styles.warn]}>Warning</Text>
+    </TouchableHighlight>
     </View>
+    
   )
 }
 
 const styles=StyleSheet.create({
   main:{
-    backgroundColor: 'yellow',flex: 1
+    flex:1
   },
-  box1:
-  {
-    backgroundColor: 'red',flex: 1
+  button:{
+    backgroundColor:'gray',
+    color:'black',
+    fontSize:26,
+    borderColor:'red',
+    borderRadius:10,
+    padding:10,
+    margin:20,
+    textAlign:'center',
+    shadowColor:'red',
+    elevation:10,
+   shadowOpacity:10,
   },
-  box2:{
-    backgroundColor: 'blue',flex: 1
-  },
-  box3:{
-    backgroundColor: 'green',flex: 1
-  },
-  box4:{
-    backgroundColor: 'grey',flex: 1
-  }
+  success:{backgroundColor:'green',},
+  error:{backgroundColor:'red',},
+  warn:{backgroundColor:'yellow',},
 })
 
 export default App;
