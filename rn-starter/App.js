@@ -1,52 +1,85 @@
-import React from "react";
-import { StyleSheet, Text, TouchableHighlight, View } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from "react-native";
 
 
 
 const App = () => {
 
-
+const[selectedradio,setselectedradio]=useState(1)
 
   return (
     <View style={styles.main}>
   
-    <TouchableHighlight>
-      <Text style={styles.button}>Button</Text>
-    </TouchableHighlight>
-    <TouchableHighlight>
-      <Text style={[styles.button,styles.success]}>Success</Text>
-    </TouchableHighlight>
-    <TouchableHighlight>
-      <Text style={[styles.button,styles.error]}>Error</Text>
-    </TouchableHighlight>
-    <TouchableHighlight>
-      <Text style={[styles.button,styles.warn]}>Warning</Text>
-    </TouchableHighlight>
+    <TouchableOpacity onPress={()=>setselectedradio(1)}>
+      <View style={styles.radiowraper}>
+      <View style={styles.circle}>
+        
+      {
+        selectedradio==1?<View style={styles.circlebg}></View>:null
+      }
+      </View>
+      <Text style={styles.radioText}>Radio 1</Text>
+      </View>
+    </TouchableOpacity>
+    <TouchableOpacity onPress={()=>setselectedradio(2)}>
+      <View style={styles.radiowraper}>
+      <View style={styles.circle}>
+        
+      {
+        selectedradio==2?<View style={styles.circlebg}></View>:null
+      }
+      </View>
+      <Text style={styles.radioText}>Radio 2</Text>
+      </View>
+    </TouchableOpacity>
     </View>
+
     
   )
 }
 
 const styles=StyleSheet.create({
   main:{
-    flex:1
+    flex:1,
+    alignItems:'center',
+    justifyContent:'center',
+
   },
-  button:{
-    backgroundColor:'gray',
+  circle:{
+    
+    height:40,
+    width:40,
+    borderRadius:20,
+    borderWidth:2,
+    borderColor:'black',
+    margin:10,
+    
+    
+  },
+  circlebg:{
+    backgroundColor:'black',
+    height:28,
+    width:28,
+    borderRadius:20,
+    margin:4,
+  
+
+  },
+  radioText:{
+    
     color:'black',
     fontSize:26,
-    borderColor:'red',
-    borderRadius:10,
     padding:10,
     margin:20,
     textAlign:'center',
-    shadowColor:'red',
-    elevation:10,
-   shadowOpacity:10,
+    
+    
   },
-  success:{backgroundColor:'green',},
-  error:{backgroundColor:'red',},
-  warn:{backgroundColor:'yellow',},
+  radiowraper:{
+    flexDirection:'row',
+    alignItems:'center',
+  },
+  
 })
 
 export default App;
