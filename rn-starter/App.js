@@ -45,19 +45,27 @@ const Addnew = () => {
   );
 };
 
-const Home = () => {
+const Home = (props) => {
+const{user,age}=props.route.params;
   return (
     <View>
       <Text>Home Screen</Text>
+      <View >
+      <Text>Welcome to MyCouponBag {user} !</Text>
+      <Text>your age:{age}</Text>
+      </View>
+
     </View>
   );
 };
 
 const Login = ({ navigation }) => {
+  const user="Pooja"
+  const age=29
   return (
     <View>
       <Text>Login Screen</Text>
-      <Button title="Go to Home page" onPress={() => navigation.navigate('Home')} />
+      <Button title="Go to Home page" onPress={() => navigation.navigate('Home',{user,age}) }/>
     </View>
   );
 };
