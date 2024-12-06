@@ -8,8 +8,20 @@ const Stack = createStackNavigator();
 const  App=()=> {
   return (
     <NavigationContainer>
-     <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Login" component={Login}/>
+     <Stack.Navigator initialRouteName="Login"
+     screenOptions={{
+  
+      headerStyle:{
+        backgroundColor:'skyblue',
+        },
+        headerTintColor:'Black',
+        headerTitleStyle:{
+        fontSize:20,
+      }}}>
+        <Stack.Screen name="Login" component={Login} 
+        />
+
+
         <Stack.Screen name="Home" component={Home}/>
         </Stack.Navigator>
     </NavigationContainer>
