@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { Button, Text, TextInput, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -46,13 +47,13 @@ const Addnew = () => {
 };
 
 const Home = (props) => {
-const{user,age}=props.route.params;
+const{user,password}=props.route.params;
   return (
     <View>
       <Text>Home Screen</Text>
       <View >
       <Text>Welcome to MyCouponBag {user} !</Text>
-      <Text>your age:{age}</Text>
+      
       </View>
 
     </View>
@@ -60,12 +61,16 @@ const{user,age}=props.route.params;
 };
 
 const Login = ({ navigation }) => {
-  const user="Pooja"
+  const[user,setuser]=useState("");
+  const[password,setpassword]=useState("");
   const age=29
   return (
     <View>
       <Text>Login Screen</Text>
-      <Button title="Go to Home page" onPress={() => navigation.navigate('Home',{user,age}) }/>
+      <TextInput placeholder='Enter your user id' onChangeText={(text)=>setuser(text)}/>
+      <TextInput placeholder='Enter your password' secureTextEntry={true} onChangeText={(text)=>setpassword(text)}/> 
+    
+      <Button title="Sign In" onPress={() => navigation.navigate('Home',{user,password}) }/>
     </View>
   );
 };
