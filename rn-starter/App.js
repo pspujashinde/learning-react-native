@@ -2,14 +2,14 @@ import * as React from 'react';
 import { useState } from 'react';
 import { Button, Text, TextInput, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import{ createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator
+      <Tab.Navigator
         initialRouteName="Login"
         screenOptions={{
           headerStyle: {
@@ -21,9 +21,9 @@ const App = () => {
           },
         }}
       >
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Addnew" component={Addnew} />
-        <Stack.Screen
+        <Tab.Screen name="Login" component={Login} />
+        <Tab.Screen name="Addnew" component={Addnew} />
+        <Tab.Screen
           name="Home"
           component={Home}
           options={({ navigation }) => ({
@@ -33,7 +33,7 @@ const App = () => {
             ),
           })}
         />
-      </Stack.Navigator>
+      </Tab.Navigator>
     </NavigationContainer>
   );
 };
