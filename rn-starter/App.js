@@ -1,76 +1,32 @@
-import * as React from 'react';
-import { useState } from 'react';
-import { Button, Text, TextInput, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import{ createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-
-const Tab = createBottomTabNavigator();
+import {  Text, View } from 'react-native';
+import { useEffect, useState } from 'react';
 
 const App = () => {
-  return (
-    <NavigationContainer>
-      <Tab.Navigator
-        initialRouteName="Login"
-        screenOptions={{
-          headerStyle: {
-            backgroundColor: 'skyblue',
-          },
-          headerTintColor: 'Black',
-          headerTitleStyle: {
-            fontSize: 20,
-          },
-        }}
-      >
-        <Tab.Screen name="Login" component={Login} />
-        <Tab.Screen name="Addnew" component={Addnew} />
-        <Tab.Screen
-          name="Home"
-          component={Home}
-          options={({ navigation }) => ({
-            headerTitle: () => <Text>MyCouponBag</Text>,
-            headerRight: () => (
-              <Button title="Add New" onPress={() => navigation.navigate('Addnew')} />
-            ),
-          })}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
-  );
-};
+  const [data, setdata] = useState(undefined);
 
-const Addnew = () => {
+  const getapicall = async () => {
+    // API Call
+    const url = "https://jsonplaceholder.typicode.com/posts/1";
+    const result = await fetch(url);
+    const data = await result.json(); // Declare 'Final' here
+    setdata(data);
+  };
+
+  useEffect(() => {
+    getapicall();
+  }, []);
+
   return (
     <View>
-      <TextInput placeholder="Enter your coupon details" />
-    </View>
-  );
-};
-
-const Home = (props) => {
-const{user,password}=props.route.params;
-  return (
-    <View>
-      <Text>Home Screen</Text>
-      <View >
-      <Text>Welcome to MyCouponBag {user} !</Text>
-      
-      </View>
-
-    </View>
-  );
-};
-
-const Login = ({ navigation }) => {
-  const[user,setuser]=useState("");
-  const[password,setpassword]=useState("");
-  const age=29
-  return (
-    <View>
-      <Text>Login Screen</Text>
-      <TextInput placeholder='Enter your user id' onChangeText={(text)=>setuser(text)}/>
-      <TextInput placeholder='Enter your password' secureTextEntry={true} onChangeText={(text)=>setpassword(text)}/> 
-    
-      <Button title="Sign In" onPress={() => navigation.navigate('Home',{user,password}) }/>
+      <Text>API CALL</Text>
+      {data ? (
+        <View>
+          <Text>{data.userId}</Text>
+          <Text>{data.id}</Text>
+          <Text>{data.title}</Text>
+          <Text>{data.body}</Text>
+        </View>
+      ) : null}
     </View>
   );
 };
